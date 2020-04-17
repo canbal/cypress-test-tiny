@@ -28,6 +28,8 @@ describe('Bug?', () => {
         // programmatically login to Periscope via Twitter
         cy.clearCookies({"domain": "twitter.com"})
         cy.clearCookies({"domain": "periscope.tv"})
+        
+        cy.visit("https://www.periscope.tv")
         cy.request("https://www.periscope.tv").then((response) => {
             cy.getCookie("pscp-csrf").then((cookie) => {
                 let loginUrl = 'https://www.periscope.tv/i/twitter/login?csrf=' + cookie.value;
